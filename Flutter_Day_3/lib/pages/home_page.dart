@@ -10,6 +10,15 @@ class HomePage extends StatelessWidget {
         title: const Text('Flutter Practice'),
         centerTitle: true,
       ),
+      body: const Center(
+        child: Text('Welcome to practising',
+          style: TextStyle(
+            fontSize: 22.0,
+            color: Colors.deepPurple,
+            fontWeight: FontWeight.w500
+          ),
+        ),
+      ),
     );
   }
 }
