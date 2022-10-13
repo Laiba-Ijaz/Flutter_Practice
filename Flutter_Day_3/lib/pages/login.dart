@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
           const Text('Welcome to Login Screen',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 22
+            fontSize: 24
           ),),
           const SizedBox(height: 20,),
           Column(
