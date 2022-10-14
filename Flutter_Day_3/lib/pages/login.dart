@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_day_three/utils/routes.dart';
-
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String name="";
+  bool changeButton = false;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,8 +22,8 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Image.asset('assets/images/login_image.png',fit: BoxFit.cover, ),
             ),
-            const Text('Welcome to Login Screen',
-            style: TextStyle(
+            Text('Welcome $name',
+            style: const TextStyle(
             fontWeight: FontWeight.bold,
               fontSize: 24
               ),
@@ -30,13 +36,17 @@ class LoginScreen extends StatelessWidget {
                   child: TextFormField(
                     obscureText: false,
                     decoration:InputDecoration(
-                      hintText: 'example@gmail.com',
-                      labelText: 'Enter Email',
-                      prefixIcon: const Icon(Icons.email_rounded),
+                      hintText: 'Robbin',
+                      labelText: 'Enter Username',
+                      prefixIcon: const Icon(Icons.person),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0)
                       )
                     ),
+                    onChanged: (value){
+                      name = value;
+                      setState(() {});
+                    },
                   ),
                 ),
                 Padding(
@@ -53,28 +63,57 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 60,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, MyRoutes.homeRoute);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)
-                        ),
-                        elevation: 5,
-                        primary: Colors.deepPurpleAccent,
-                        onPrimary: Colors.white,
-                        shadowColor: Colors.deepPurpleAccent,
-                      ),
-                      child: const Text('Login'),
+                const SizedBox(height: 30.0,),
+                InkWell(
+                  onTap: () async{
+
+                   setState(() {
+                     changeButton = true;
+                   });
+                   await Future.delayed(const Duration(seconds: 1));
+                   Navigator.pushNamed(context, MyRoutes.homeRoute);
+                  },
+                  child: AnimatedContainer(
+                    duration: const Duration(seconds: 1),
+                    width: changeButton? 50:150,
+                    height: 50,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurpleAccent,
+                      borderRadius: BorderRadius.circular(changeButton ? 50 :10),
                     ),
-                  )
+                    child: changeButton ? const Icon(Icons.done, color: Colors.white,): const Text(
+                      'Login',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: Colors.white
+                      ),
+                    ),
+                  ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                //   child: SizedBox(
+                //     width: double.infinity,
+                //     height: 60,
+                //     child: ElevatedButton(
+                //       onPressed: () {
+                //         Navigator.pushNamed(context, MyRoutes.homeRoute);
+                //       },
+                //       style: ElevatedButton.styleFrom(
+                //         shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(20.0)
+                //         ),
+                //         elevation: 5,
+                //         primary: Colors.deepPurpleAccent,
+                //         onPrimary: Colors.white,
+                //         shadowColor: Colors.deepPurpleAccent,
+                //       ),
+                //       child: const Text('Login'),
+                //     ),
+                //   )
+                // ),
                const Padding(
                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                  child: Text('Forgot Password'),
