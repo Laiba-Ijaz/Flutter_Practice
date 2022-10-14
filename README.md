@@ -13,3 +13,9 @@ Practiced Adding Image Assets, Google Fonts and Designed a basic cool Login Scre
 
 ![Login Form](https://user-images.githubusercontent.com/82440403/195641271-d24ca7fa-ffeb-424c-9405-c60852e9b6e9.jpg)
 
+# Flutter Day 5 and 6
+Added Animation on Button
+
+https://user-images.githubusercontent.com/82440403/195889087-e28264cd-3d7f-46fd-8e43-1a7c25708e46.mp4
+
+
