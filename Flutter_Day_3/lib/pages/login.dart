@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_day_three/utils/routes.dart';
 class LoginScreen extends StatefulWidget {
@@ -10,6 +12,19 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   String name="";
   bool changeButton = false;
+  final _formKey = GlobalKey<FormState>();
+  moveToHome(BuildContext context) async{
+    if(_formKey.currentState!.validate()){
+    setState(() {
+      changeButton = true;
+    });
+    await Future.delayed(const Duration(seconds: 1));
+    await Navigator.pushNamed(context, MyRoutes.homeRoute);
+    setState(() {
+      changeButton = false;
+    });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -29,96 +44,107 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: 20,),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-                  child: TextFormField(
-                    obscureText: false,
-                    decoration:InputDecoration(
-                      hintText: 'Robbin',
-                      labelText: 'Enter Username',
-                      prefixIcon: const Icon(Icons.person),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0)
-                      )
-                    ),
-                    onChanged: (value){
-                      name = value;
-                      setState(() {});
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                  child: TextFormField(
-                    obscureText: true,
-                    decoration:InputDecoration(
-                        hintText: '1234567',
-                        labelText: 'Enter Password',
-                        prefixIcon: const Icon(Icons.lock_outline),
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+                    child: TextFormField(
+                      obscureText: false,
+                      validator: (value){
+                        if(value!.isEmpty){
+                          return 'Username can not be empty';
+                        }
+                        return null;
+                      },
+                      decoration:InputDecoration(
+                        hintText: 'Robbin',
+                        labelText: 'Enter Username',
+                        prefixIcon: const Icon(Icons.person),
                         border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0)
+                          borderRadius: BorderRadius.circular(20.0)
                         )
+                      ),
+                      onChanged: (value){
+                        name = value;
+                        setState(() {});
+                      },
                     ),
                   ),
-                ),
-                const SizedBox(height: 30.0,),
-                InkWell(
-                  onTap: () async{
-
-                   setState(() {
-                     changeButton = true;
-                   });
-                   await Future.delayed(const Duration(seconds: 1));
-                   Navigator.pushNamed(context, MyRoutes.homeRoute);
-                  },
-                  child: AnimatedContainer(
-                    duration: const Duration(seconds: 1),
-                    width: changeButton? 50:150,
-                    height: 50,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.deepPurpleAccent,
-                      borderRadius: BorderRadius.circular(changeButton ? 50 :10),
-                    ),
-                    child: changeButton ? const Icon(Icons.done, color: Colors.white,): const Text(
-                      'Login',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        color: Colors.white
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                    child: TextFormField(
+                      obscureText: true,
+                      validator: (value){
+                        if(value!.isEmpty){
+                          return 'Password cannot be null';
+                        }
+                        else if(value.length<6){
+                          return "Password length should be atleast 6";
+                        }
+                        return null;
+                      },
+                      decoration:InputDecoration(
+                          hintText: '1234567',
+                          labelText: 'Enter Password',
+                          prefixIcon: const Icon(Icons.lock_outline),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0)
+                          )
                       ),
                     ),
                   ),
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                //   child: SizedBox(
-                //     width: double.infinity,
-                //     height: 60,
-                //     child: ElevatedButton(
-                //       onPressed: () {
-                //         Navigator.pushNamed(context, MyRoutes.homeRoute);
-                //       },
-                //       style: ElevatedButton.styleFrom(
-                //         shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(20.0)
-                //         ),
-                //         elevation: 5,
-                //         primary: Colors.deepPurpleAccent,
-                //         onPrimary: Colors.white,
-                //         shadowColor: Colors.deepPurpleAccent,
-                //       ),
-                //       child: const Text('Login'),
-                //     ),
-                //   )
-                // ),
-               const Padding(
-                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                 child: Text('Forgot Password'),
-               )
-              ],
+                  const SizedBox(height: 30.0,),
+                  Material(
+                    borderRadius: BorderRadius.circular(changeButton ? 50 :10),
+                    color: Colors.deepPurpleAccent,
+                    child: InkWell(
+                      onTap: () =>moveToHome(context),
+                      child: AnimatedContainer(
+                        duration: const Duration(seconds: 1),
+                        width: changeButton? 50:150,
+                        height: 50,
+                        alignment: Alignment.center,
+                        child: changeButton ? const Icon(Icons.done, color: Colors.white,): const Text(
+                          'Login',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.white
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  //   child: SizedBox(
+                  //     width: double.infinity,
+                  //     height: 60,
+                  //     child: ElevatedButton(
+                  //       onPressed: () {
+                  //         Navigator.pushNamed(context, MyRoutes.homeRoute);
+                  //       },
+                  //       style: ElevatedButton.styleFrom(
+                  //         shape: RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.circular(20.0)
+                  //         ),
+                  //         elevation: 5,
+                  //         primary: Colors.deepPurpleAccent,
+                  //         onPrimary: Colors.white,
+                  //         shadowColor: Colors.deepPurpleAccent,
+                  //       ),
+                  //       child: const Text('Login'),
+                  //     ),
+                  //   )
+                  // ),
+                 const Padding(
+                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                   child: Text('Forgot Password'),
+                 )
+                ],
+              ),
             )
           ],
         ),
