@@ -13,6 +13,9 @@ class _LoginScreenState extends State<LoginScreen> {
   String name="";
   bool changeButton = false;
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   moveToHome(BuildContext context) async{
     if(_formKey.currentState!.validate()){
     setState(() {
@@ -23,6 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       changeButton = false;
     });
+    _usernameController.clear();
+    _passwordController.clear();
     }
   }
   @override
@@ -51,6 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
                     child: TextFormField(
+                      controller: _usernameController,
                       obscureText: false,
                       validator: (value){
                         if(value!.isEmpty){
@@ -76,6 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                     child: TextFormField(
                       obscureText: true,
+                      controller: _passwordController,
                       validator: (value){
                         if(value!.isEmpty){
                           return 'Password cannot be null';
