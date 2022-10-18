@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // brightness: Brightness.dark
       ),
       // home: const HomePage(),
-      initialRoute: '/four',
+      initialRoute: MyRoutes.homeRoute,
       //routes
       routes: {
         MyRoutes.homeRoute:(context)=> const HomePage(),
