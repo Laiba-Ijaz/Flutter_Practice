@@ -88,8 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           return 'Password cannot be null';
                         }
                         else if(value.length<6){
-                          return "Password length should be atleast 6";
+                          return "Password length should be at least 6";
                         }
+                        
                         return null;
                       },
                       decoration:InputDecoration(
