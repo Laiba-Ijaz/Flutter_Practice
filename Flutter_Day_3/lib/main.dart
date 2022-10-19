@@ -3,6 +3,7 @@ import 'package:flutter_day_three/pages/home_page.dart';
 import 'package:flutter_day_three/pages/login.dart';
 import 'package:flutter_day_three/pages/login_page.dart';
 import 'package:flutter_day_three/utils/routes.dart';
+import 'package:flutter_day_three/widgets/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -19,14 +20,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        fontFamily: GoogleFonts.lato().fontFamily,
-        primaryTextTheme: GoogleFonts.latoTextTheme()
-        // brightness: Brightness.dark
-      ),
-      // home: const HomePage(),
+      theme: MyTheme.lightTheme(context),
       initialRoute: MyRoutes.homeRoute,
+      //could be used instead of initial Route ====> home: const HomePage(),
       //routes
       routes: {
         MyRoutes.homeRoute:(context)=> const HomePage(),
