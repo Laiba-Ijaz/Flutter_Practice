@@ -19,17 +19,24 @@ Added Animation on Button
 https://user-images.githubusercontent.com/82440403/195889087-e28264cd-3d7f-46fd-8e43-1a7c25708e46.mp4
 
 # Flutter Day 8
-Text Form Field Definition and added validations and clearing form-field after moving back
+Text Form Field Definition and added validations and clearing form-field after moving back.
 Check Below:👇
 ![Screenshot_20221017-205429](https://user-images.githubusercontent.com/82440403/196740636-44b42a3d-8f30-4b6b-96bf-fff2d26bda40.png)
 
 # Flutter Day 9  
-Added Drawer through custom Widget
+Added Drawer through custom Widget.
 Screenshot is attached below:👇
 ![Screenshot_20221019-203803](https://user-images.githubusercontent.com/82440403/196740050-510adf87-397f-4b31-bb03-47a5b1d0e8ea.png)
 
 # Flutter Day 10, 11 and 12
-Added Drawer through custom Widget
+Added Drawer through custom Widget.
 Screenshot is attached below:👇
 ![Screenshot_20221019-203757](https://user-images.githubusercontent.com/82440403/196740855-9b143170-3cce-4d66-9279-bf2ef845284a.png)
+
+# Flutter Day 13,14 & 15
+Added JSON File, JSON Decode, Updated Home_Page and Displayed Products. Added Drawer through custom Widget
+Screenshot is attached below:👇
+![Screenshot_20221020-134509](https://user-images.githubusercontent.com/82440403/196903149-a5d8ecc4-183e-40f5-8e29-b5080b138a55.png)
+
+
 
