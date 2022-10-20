@@ -63,6 +63,23 @@
       "price": 899,
       "color": "#7c95eb",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBNHd7FwarbxA1xdMFt24KazjcR4dWPH_t_T5dz4YNK1s7rJAQ8gOIuR_NRw6eeiQgFhbZ9sAN&usqp=CAc"
+    },
+    {
+      "id": 9,
+      "name": "Galaxy Z Flip",
+      "desc": "Samsung Galaxy Z Flip 4 2022 edition",
+      "price": 1632,
+      "color": "#ffffff",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3c3VvZWugiUkWGpDUPb_3f-VJsS1CI3Lk1g&usqp=CAU"
+    },
+    {
+      "id": 10,
+      "name": "Galaxy Note 10+",
+      "desc": "Samsung Galaxy Note 10+ 2022 Edition",
+      "price": 1099,
+      "color": "#ffffff",
+      "image": "https://propakistani.pk/price/wp-content/uploads/2019/08/galaxy-note10-plus.jpg"
     }
+
   ]
 }
