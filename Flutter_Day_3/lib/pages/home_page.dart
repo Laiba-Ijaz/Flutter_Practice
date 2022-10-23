@@ -47,13 +47,15 @@ class _HomePageState extends State<HomePage> {
       drawer: const MyDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
+        child: (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)? ListView.builder(
           itemCount: CatalogModel.items!.length,
           itemBuilder: (context,index){
             return ItemWidget(
               item: CatalogModel.items![index],
             );
           }
+        ): const Center(
+          child: CircularProgressIndicator(),
         ),
       ),
       // body: const Center(
