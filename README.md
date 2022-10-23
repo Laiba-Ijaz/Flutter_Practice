@@ -38,5 +38,14 @@ Added JSON File, JSON Decode, Updated Home_Page and Displayed Products. Added Dr
 Check below:👇\n
 ![Screenshot_20221020-134509](https://user-images.githubusercontent.com/82440403/196903149-a5d8ecc4-183e-40f5-8e29-b5080b138a55.png)
 
+# Flutter Day 16 - GridView in Catalog Items
+Added Gridview for displaying catalog items but coouldn't achieve what we wanted. Check below:👇\n
+![Screenshot_20221023-122914](https://user-images.githubusercontent.com/82440403/197381859-d11abf0a-3bb7-4c1f-a08b-b30a2d203edb.png)
+
+# Flutter Day 17 - VelocityX Library
+Used VelocityX for designing UI of Homepage.dart (CatalogItems). Check below:👇\n
+https://user-images.githubusercontent.com/82440403/197381904-043d4744-f7b9-4f89-b4e4-3a6816b02963.mp4
+![Screenshot_20221023-131000](https://user-images.githubusercontent.com/82440403/197381914-51e61d7b-d250-4424-b19a-59d873ffacf3.png)
+
 
 
