@@ -1,22 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_day_three/models/catalog.dart';
-import 'package:flutter_day_three/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-class CatalogHeader extends StatelessWidget {
-  const CatalogHeader({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        "Catalog App".text.xl5.bold.color(MyTheme.darkBluishColor).make(),
-        "Trending Product".text.xl2.make()
-      ],
-    );
-  }
-}
+import '../../pages/home_detail_page.dart';
+import '../../widgets/theme.dart';
+import 'catalog_image.dart';
 
 class CatalogList extends StatelessWidget {
   const CatalogList({Key? key}) : super(key: key);
@@ -28,11 +15,18 @@ class CatalogList extends StatelessWidget {
       itemCount: CatalogModel.items!.length,
       itemBuilder: (context, index){
         final catalog = CatalogModel.items![index];
-        return CatalogItem(catalog: catalog);
+        return InkWell(
+          onTap: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeDetailsPage(catalog: catalog),
+            ),);
+          },
+          child: CatalogItem(catalog: catalog),
+        );
       },
     );
   }
 }
+
 class CatalogItem extends StatelessWidget {
   final Item catalog;
 
@@ -45,8 +39,11 @@ class CatalogItem extends StatelessWidget {
     return VxBox(
       child: Row(
         children: [
-          CatalogImage(
-            image: catalog.image,
+          Hero(
+            tag: Key(catalog.id.toString()),
+            child: CatalogImage(
+              image: catalog.image,
+            ),
           ),
           Expanded(
               child: Column(
@@ -82,16 +79,5 @@ class CatalogItem extends StatelessWidget {
         ],
       ),
     ).white.rounded.square(150).make().py16();
-  }
-}
-class CatalogImage extends StatelessWidget {
-  final String image;
-  const CatalogImage({Key? key,required this.image}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.network(
-      image
-    ).box.rounded.p8.color(MyTheme.creamColor).make().p16().w40(context);
   }
 }

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/catalog.dart';
-import '../widgets/catalog_widgets.dart';
-import '../widgets/drawer.dart';
-import '../widgets/item_widget.dart';
 import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../widgets/home_widgets/catalog_header.dart';
+import '../widgets/home_widgets/catalog_list.dart';
 import '../widgets/theme.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -109,11 +108,9 @@ class _HomePageState extends State<HomePage> {
               children: [
                 const CatalogHeader(),
                 if (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
-                  const CatalogList().expand()
+                  const CatalogList().py16().expand()
                 else
-                  const Center(
-                    child: CircularProgressIndicator(),
-                  )
+                  const CircularProgressIndicator().centered().expand(),
               ],
           ),
         ),
