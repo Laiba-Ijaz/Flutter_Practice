@@ -47,5 +47,9 @@ Used VelocityX for designing UI of Homepage.dart (CatalogItems). Check below:ðŸ‘
 https://user-images.githubusercontent.com/82440403/197381904-043d4744-f7b9-4f89-b4e4-3a6816b02963.mp4
 ![Screenshot_20221023-131000](https://user-images.githubusercontent.com/82440403/197381914-51e61d7b-d250-4424-b19a-59d873ffacf3.png)
 
+# Flutter Day 18 - Hero Animation
+Designed Basic Cart Page using VelocityX. Check below:ðŸ‘‡\n
+https://user-images.githubusercontent.com/82440403/197549029-f3e4d7af-9cea-4190-b1ab-7235a0911ec6.mp4
 
 
+ 
