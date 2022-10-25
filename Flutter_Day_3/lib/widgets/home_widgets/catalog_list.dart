@@ -70,14 +70,14 @@ class CatalogItem extends StatelessWidget {
                             shape: MaterialStateProperty.all(
                               StadiumBorder(),
                             )),
-                        child: "Buy".text.make(),
+                        child: "Add to Cart".text.make(),
                       )
                     ],
-                  ).pOnly(right: 8.0)
+                  ).pOnly(right: 5.0)
                 ],
               ))
         ],
       ),
-    ).white.rounded.square(150).make().py16();
+    ).color(context.cardColor).rounded.square(150).make().py8();
   }
 }
