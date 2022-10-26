@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_day_three/models/catalog.dart';
+import 'package:flutter_day_three/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../widgets/theme.dart';
 
 class HomeDetailsPage extends StatelessWidget {
   final Item catalog;
@@ -11,9 +10,11 @@ class HomeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      bottomNavigationBar:   Container(
-        color: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      bottomNavigationBar: Container(
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -23,17 +24,17 @@ class HomeDetailsPage extends StatelessWidget {
               onPressed: () {},
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    MyTheme.darkBluishColor,
+                    MyTheme.darkBluishColor
                   ),
                   shape: MaterialStateProperty.all(
-                    StadiumBorder(),
+                    const StadiumBorder(),
                   )),
-              child: "Buy".text.xl.make(),
-            ).wh(100, 40)
+              child: "Add to Cart".text.xl.make(),
+            ).wh(150, 50)
           ],
         ).p24(),
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       body: SafeArea(
         bottom: false,
       child: Column(
@@ -49,14 +50,17 @@ class HomeDetailsPage extends StatelessWidget {
                 height: 30.0,
                 child: Container(
                   width: context.screenWidth,
-                  color: Colors.white,
+                  color: context.cardColor,
                   child: Column(
                     children: [
                       catalog.name.text.xl4
-                          .color(MyTheme.darkBluishColor)
+                          .color(context.accentColor)
                           .bold
                           .make(),
                       catalog.desc.text.xl.textStyle(context.captionStyle).make(),
+                      10.heightBox,
+                      "Dolor sea takimata ipsum sea eirmod aliquyam est. Eos ipsum voluptua eirmod elitr, no dolor dolor amet eirmod dolor labore dolores magna. Amet vero vero vero kasd, dolore sea sed sit invidunt nonumy est sit clita. Diam aliquyam amet tempor diam no aliquyam invidunt. Elitr lorem eirmod dolore clita. Rebum."
+                          .text.textStyle(context.captionStyle).make().p16()
                     ],
                   ).py64(),
                 ),
