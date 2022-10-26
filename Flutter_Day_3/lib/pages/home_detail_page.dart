@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_day_three/models/catalog.dart';
+import 'package:flutter_day_three/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../widgets/theme.dart';
 
 class HomeDetailsPage extends StatelessWidget {
   final Item catalog;
@@ -14,8 +13,8 @@ class HomeDetailsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      bottomNavigationBar:   Container(
-        color: Colors.white,
+      bottomNavigationBar: Container(
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -25,10 +24,10 @@ class HomeDetailsPage extends StatelessWidget {
               onPressed: () {},
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    MyTheme.darkBluishColor,
+                    MyTheme.darkBluishColor
                   ),
                   shape: MaterialStateProperty.all(
-                    StadiumBorder(),
+                    const StadiumBorder(),
                   )),
               child: "Add to Cart".text.xl.make(),
             ).wh(150, 50)
@@ -51,11 +50,11 @@ class HomeDetailsPage extends StatelessWidget {
                 height: 30.0,
                 child: Container(
                   width: context.screenWidth,
-                  color: Colors.white,
+                  color: context.cardColor,
                   child: Column(
                     children: [
                       catalog.name.text.xl4
-                          .color(MyTheme.darkBluishColor)
+                          .color(context.accentColor)
                           .bold
                           .make(),
                       catalog.desc.text.xl.textStyle(context.captionStyle).make(),
