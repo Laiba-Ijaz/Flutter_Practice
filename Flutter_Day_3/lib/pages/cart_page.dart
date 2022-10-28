@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/cart.dart';
 import '../widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 class CartPage extends StatelessWidget {
@@ -25,14 +26,16 @@ class _CartList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = CartModel();
     return ListView.builder(
+      itemCount: _cart.items.length,
       itemBuilder: (context,index)=>ListTile(
         leading: const Icon(Icons.done),
         trailing: IconButton(
           icon: const Icon(Icons.remove_circle_outline_rounded),
           onPressed: (){},
         ),
-        title: "Item 1".text.make(),
+        title: _cart.items[index].name.text.make(),
       ),
     );
   }
@@ -43,14 +46,17 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = CartModel();
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$9999".text.xl3.color(context.theme.accentColor).make(),
+          "\$${_cart.totalPrice}".text.xl3.color(context.theme.accentColor).make(),
           30.widthBox,
-          ElevatedButton(onPressed: (){},
+          ElevatedButton(onPressed: (){
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: "Buying is not supported yet".text.white.make()));
+          },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
                 MyTheme.darkBluishColor
