@@ -21,19 +21,27 @@ class CartPage extends StatelessWidget {
   }
 }
 
-class _CartList extends StatelessWidget {
+class _CartList extends StatefulWidget {
   const _CartList({Key? key}) : super(key: key);
 
   @override
+  State<_CartList> createState() => _CartListState();
+}
+
+class _CartListState extends State<_CartList> {
+  @override
   Widget build(BuildContext context) {
     final _cart = CartModel();
-    return ListView.builder(
+    return _cart.items.isEmpty ?"Nothing to show".text.xl3.make() :ListView.builder(
       itemCount: _cart.items.length,
       itemBuilder: (context,index)=>ListTile(
         leading: const Icon(Icons.done),
         trailing: IconButton(
           icon: const Icon(Icons.remove_circle_outline_rounded),
-          onPressed: (){},
+          onPressed: (){
+            _cart.remove(_cart.items[index]);
+            setState(() {});
+          },
         ),
         title: _cart.items[index].name.text.make(),
       ),
