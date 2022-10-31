@@ -5,10 +5,9 @@ import 'package:flutter_day_three/utils/routes.dart';
 import '../models/catalog.dart';
 import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
-
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
-import '../widgets/theme.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
