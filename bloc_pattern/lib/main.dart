@@ -67,11 +67,17 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             StreamBuilder(
               stream: counterBloc.counterStream,
-              builder: (context, snapshot) {
-                return Text(
-                  '${snapshot.data}',
-                  style: Theme.of(context).textTheme.headline4,
-                );
+              builder: (context, snapshot){
+                if(snapshot.hasData){
+                  return Text(
+                    '${snapshot.data}',
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                }
+                if(snapshot.hasError){
+                  print(snapshot.error);
+                }
+
               }
             ),
           ],
